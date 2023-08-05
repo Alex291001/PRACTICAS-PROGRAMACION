@@ -1,4 +1,4 @@
-
+//Practica Simples para comprender la estructura de JavaScript
 
     console.log("Hola mundo")// ingreso de comentario dentro del programa que sirve como anotacion
     console.log("Como estas")// con esto puedo generar una impresion de texto dentro de la consola
