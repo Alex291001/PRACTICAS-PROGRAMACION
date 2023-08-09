@@ -109,11 +109,17 @@ get formulas3D(){
 get accion2d(){
         let name_accion
         let select
+        let s=true
         
     switch(this._nombre_figura){
-            case "cuadrado"||"rectangulo"||"paralelogramo"||"trapezoide":
-            select="1"//aqui debe tener la opcion de seleccionar de acuerdo con el prompt de acuerdo a lo que el texto diga 
-            
+            case "cuadrado":
+                case "rectangulo":
+                    case "paralelogramo":
+                        case "trapezoide":
+               
+            while(s){
+                select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n 1)area  2)permietro \n\n 0)SALIR","")
+                s=false
             switch(select){
                 case "1":
                     
@@ -124,12 +130,27 @@ get accion2d(){
                 case "2":
                 name_accion="perimetro"
                 break
+                case "0":
+                    alert("Se saldra del programa")
+                    return
+                    break
+                 default:
+                alert("Valores no definidos.. intente nuevamente")
+                s=true
+                 break
+
             }
+        }
             break
             
             case "circulo":
 
-                select="1"//aqui debe tener la opcion de seleccionar de acuerdo con el prompt de acuerdo a lo que el texto diga 
+
+                    while(s){
+                        s =false
+
+                    
+                select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n 1)area  2)perimetro 3)area sector circular  4)lado sector circular 5)corona circular 6)elipse   \n\n 0)SALIR","")
                 switch(select){
                     case "1":
                     name_accion="area"
@@ -150,11 +171,25 @@ get accion2d(){
                     case "6":
                     name_accion="elipse"
                     break
+                    case "0":
+                        alert("Se saldra del programa")
+
+                        return
+                        break
+
+                    default:
+                        alert("Valores no definidos.. intente nuevamente")
+                    s=true
+                    break
                 }
+            }
              
             break
             case "triangulo":
-                select="1"//aqui debe tener la opcion de seleccionar de acuerdo con el prompt de acuerdo a lo que el texto diga 
+
+                while(s){
+                    s=false
+                select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n 1)area  2)perimetro 3)teorema de pitagoras  4)triangulo equilatero   \n\n 0)SALIR","")
                 switch(select){
 
                     case "1":
@@ -169,7 +204,16 @@ get accion2d(){
                     case "4":
                     name_accion="triangulo equilatero"
                     break
-                }
+                    case "0":
+                        alert("se saldra del programa")
+                        return
+
+                        break
+                    default:
+                    alert("Valores no definidos.. intente nuevamente")
+                    s=true
+                    break
+                }}
             
             break
             
@@ -184,11 +228,16 @@ get accion3d(){
 
     let name_accion
     let select
+    let s=true
+
+
 
 switch(this._nombre_figura){
         case "paralelepipedo"||"esfera"||"cilindro":
-        select="1"//aqui debe tener la opcion de seleccionar de acuerdo con el prompt de acuerdo a lo que el texto diga 
-
+        
+            while(s){
+                select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n1)area     2)volumen     0)Salir","")
+                s=false
         switch(select){
             case "1":
             name_accion="area"
@@ -197,10 +246,22 @@ switch(this._nombre_figura){
             case "2":
             name_accion="volumen"
             break
-        }
+            case "0":
+                alert("Se saldra del programa")
+                return
+                break
+            default:
+                alert("Se ha ingresado el dato incorrecto... Intente nuevamente")
+                s=true
+                break
+
+        }}
         
         case "cono":
-            select="1"//aqui debe tener la opcion de seleccionar de acuerdo con el prompt de acuerdo a lo que el texto diga 
+
+            while(s){
+                s=false
+            select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n1)area     2)volumen     3)altura cono  0)Salir","")
 
             switch(select){
                 case "1":
@@ -213,9 +274,17 @@ switch(this._nombre_figura){
                 case "3":
                 name_accion="altura cono"
                 break
+                case "0":
+                    alert("Se saldra del programa")
+                    return
+                    break
+                default:
+                    alert("Se ha ingresado el dato incorrecto... Intente nuevamente")
+                    s=true
+                    break
 
 
-                }
+                }}
 
         break
 
@@ -225,7 +294,13 @@ switch(this._nombre_figura){
         break
         }
 
+
+        
+
         return name_accion
+
+
+
     }
 
 
@@ -241,6 +316,7 @@ class formulas2d extends Formulas{
        super(nombre)
        this._accion=accion
         this._resultado=resultado
+        
             console.log(this._accion)//desde aqui ya hago que mi propio codigo haga que se resuelva el resultado automaticamente desde el constructor esta puede 
             //hacer que la accion se realice al momento de crear una variable de tipo new clase(new formulas2d())
         switch(nombre){
@@ -249,7 +325,9 @@ class formulas2d extends Formulas{
             this._resultado=this.formula_cuadrado()//aqui llamo a la formula del cuadrado y el return sera el valor de _resultado
             
             break
-            case "rectangulo":
+
+            case "rectangulo"://rectangulo
+            
             this._resultado=this.formula_rectangulo()
             break
             case "paralelogramo":
@@ -284,14 +362,44 @@ class formulas2d extends Formulas{
     }
 
     formula_cuadrado(){
+        
         function area(){
-            let lado=5
+           
+            let s=true
+            let lado
+           
+            
+            while(s){
+                
+            lado=prompt("Cual es el lado de la figura?","")
+                
+              
+            if(!isNaN(parseInt(lado)))  s=false 
+                
+                else alert("El valor introducido es invalido... Intente nuevamente") 
+            
+              
+            }
             
             return (Math.pow(parseInt(lado), 2))
             
         }
         function perimetro(){
-            let lado=5
+            let s=true
+            let lado
+            let verificador
+            while(s){
+                
+            lado=prompt("Cual es el lado de la figura?","")
+          
+                    
+            if(!isNaN(parseInt(lado)))  s=false 
+            else alert("El valor introducido es invalido... Intente nuevamente") 
+            }
+
+
+
+
 
             return lado*4
         }
@@ -312,10 +420,21 @@ class formulas2d extends Formulas{
     
 
     formula_rectangulo(){
+
+       
         function area(){
+            let s=true
             let base,altura;
-            base=5
-            altura=3
+          
+
+            while(s){
+                base=prompt("Ingrese el valor de la base","")
+                altura=prompt("Ingrese el baso de la altura","")
+                
+                if(!isNaN(parseInt(base))&&!isNaN(parseInt(altura)))s=false
+            
+        else alert("El valor ingresado es incorrecto... Intente nuevamente")
+            }
 
             return base*altura
 
@@ -323,13 +442,22 @@ class formulas2d extends Formulas{
             
         }
         function perimetro(){
-
+            let s=true
             let l1,l2;
-            l1=4
-            l2=5
+           
+            while(s){
+                l1=prompt("Ingrese el valor de la base","")
+                l2=prompt("Ingrese el valor de la altura","")
+                
+                if(!isNaN(parseInt(l1))&&!isNaN(parseInt(l2)))s =false
+                    else alert("El valor ingresado es incorrecto... Intente nuevamente")
+            
+            }
 
             return (2*(l1))+(2*(l2))
         }
+
+       
 
         switch(this._accion){
 
@@ -349,21 +477,35 @@ class formulas2d extends Formulas{
 
     formula_trapezoide(){
         function area(){
+            let s=true
 
             let a,b,h 
-                a= 5//lado mas pequeño del trapezoide
-                b= 8//lado mas grande del trapezoide
-                h=4//su altura
-
+                
+                while(s){
+                    a= prompt("Inrese el lado mas pequeño del trapezoide","")
+                b= prompt("Ingrese el lado mas grande del trapezoide","")
+                h=prompt("Ingrese su altura","")
+                    
+                    if(!isNaN(parseInt(a))&&!isNaN(parseInt(b))&&!isNaN(parseInt(c)))s= false
+                       else alert("El valor ingresado es incorrecto... Intente nuevamente")
+                
+                }
                 return (((a+b)/2)*h)
         }
         function perimetro(){
+            let s=true
 
-            let l1=5
-            let l2=6
-            let l3=4
-            let l4=5
-
+        
+            while(s){
+                let l1=prompt("Ingrese el lado 1","")
+                let l2=prompt("Ingrese el lado 2","")
+                let l3=prompt("Ingrese el lado 3","")
+                let l4=prompt("Ingrese el lado 4","")
+                s=false
+                if(!isNaN(parseInt(l1))&&!isNaN(parseInt(l2))&&!isNaN(parseInt(l3))&&!isNaN(parseInt(l4)))s= false
+               else alert("El valor ingresado es incorrecto... Intente nuevamente")
+            
+            }
             return (l1+l2+l3+l4)
         }
 
@@ -384,23 +526,65 @@ class formulas2d extends Formulas{
 
         function area(){
 
-            let r=4
+            let s=true
+
+            let r
             let PI=3.14159
+
+            while(s){
+                r=prompt("Ingrese el valor de la radio","")
+               
+                if(!isNaN(parseInt(r)))s=false
+                else alert("El valor ingresado es incorrecto... Intente nuevamente")
+               
+                
+                
+            }
+
+
+
+
             let rpow= Math.pow(r,2);
+
+
 
             return PI*rpow
         }
         function perimetro(){
+            let s=true
             let PI=3.14159
-            let r=6
+            let r
+
+            while(s){
+                r=prompt("Ingrese el valor de la radio","")
+                
+                if(!isNaN(parseInt(r)))s=false
+                else alert("El valor ingresado es incorrecto... Intente nuevamente")
+                
+                
+                
+            }
+
              return (2*PI*r)
         }
         function AreasectorCircular(){
 
+            let s=true
             let PI=3.14159
-            let r=9
-            let grados=30
+            let r
+            let grados
             let rpow=Math.pow(r,2)
+
+            while(s){
+                r=prompt("Ingrese el valor de la radio","")
+                grados=prompt("Ingrese el valor de los grados","")
+                s=false
+                if(!isNaN(parseInt(r))&&!isNaN(parseInt(grados)))s=false
+                else alert("El valor ingresado es incorrecto... Intente nuevamente")
+                
+                
+                
+            }
 
             return PI*rpow*(grados/360)
 
@@ -408,19 +592,43 @@ class formulas2d extends Formulas{
         }
         function ladosectorCircular(){
 
+            let s=true
             let PI=3.14159
             let r=9
             let grados=30
-            
+            while(s){
+                r=prompt("Ingrese el valor de la radio","")
+                grados=prompt("Ingrese el valor de los grados","")
+                
+                if(!isNaN(parseInt(r))&&!isNaN(parseInt(grados)))s=false
+                else alert("El valor ingresado es incorrecto... Intente nuevamente")
+             
+                
+                
+            }
 
             return PI*r*(grados/180)
 
 
         }
         function coronaCircular(){
+            let s=true
             let PI=3.14159
             let R=10
             let r=8
+            while(s){
+                r=prompt("Ingrese el valor del Radio mayor","")
+                R=prompt("Ingrese el valor del radio menor","")
+                
+                if(!isNaN(parseInt(r))&&!isNaN(parseInt(R)))s=false
+               else alert("El valor ingresado es incorrecto... Intente nuevamente")
+                
+                
+                
+            }
+
+
+
             let rpow=Math.pow(r,2)
             let Rpow=Math.pow(R,2)
 
@@ -428,9 +636,21 @@ class formulas2d extends Formulas{
 
         }
         function elipse(){
+            let s=true
             let PI=3.14159
             let a=10
             let b=8
+
+            while(s){
+                a=prompt("Ingrese el valor del lado a","")
+                b=prompt("Ingrese el valor del lado b","")
+                
+                if(!isNaN(parseInt(a))&&!isNaN(parseInt(b)))s=false
+                else alert("El valor ingresado es incorrecto... Intente nuevamente")
+                
+                
+                
+            }
 
             return PI*a*b
         }
@@ -461,31 +681,67 @@ class formulas2d extends Formulas{
 
     formula_triangulo(){
         function area(){
-
+            let s=true
             let base=5
             let altura= 8
+
+            while(s){
+              
+                base=prompt("Ingresa el valor de la base","")
+                altura=prompt("Ingresa el valo de la altura","")
+                if(!isNaN(parseInt(base))&&!isNaN(parseInt(altura)))s=false 
+                else alert("Error al ingresar los datos.. Intente nuevamente") 
+                
+
+            }
 
             return (base*altura)/2
         }
         function perimetro(){
-
+            let s=true
             let a=4
             let b=3
             let c=6
 
-            return a+b+c
+            while(s){
+               
+                a=prompt("Ingresa el valor del lado a","")
+                b=prompt("Ingresa el valo del lado b","")
+                c=prompt("Ingresa el valor del lado c","")
+                if(!isNaN(parseInt(a))&&!isNaN(parseInt(b))&&!isNaN(parseInt(c)))s=false
+                else alert("Error al ingresar los datos.. Intente nuevamente") 
+              
+
+            }
+
+            return a+b+c;
         }
         function teoremaPitagoras(){
-
-            let valor=false
+            let s=true
+            let desicion
+            
             let hipotenusa, catetoA,catetoB;
+        while(s){
+            s=false
+            desicion=prompt("Ingese se quiere econtrar el lado de la hipotenusa o el cateto\n\n 1)Hioptenusa   2)Cateto","")
+           const valor = desicion=="1"? true: desicion=="2"?false: s=true
+        }
 
+                s=true
             
 
             if(valor){
-                catetoA=6
-                catetoB=4
-               
+
+                while(s){
+                    s=false
+                catetoA=prompt("Ingrese el valor del cateto A","")
+                catetoB=prompt("Ingrese el valor del cateto B","")
+                if (!isNaN(parseInt(catetoA))&&!isNaN(parseInt(catetoB)))s=false
+                else alert("Datos ingresados incorrectamente.. Intente nuevamente")
+                    
+                
+                
+            }
                 
                 return Math.sqrt((Math.pow(catetoA,2))+Math.pow(catetoB,2))
                 
@@ -493,6 +749,17 @@ class formulas2d extends Formulas{
             else{
                 hipotenusa=10
                 catetoA=4
+
+                while(s){
+                   
+                hipotenusa=prompt("Ingrese el valor de la hipotenusa","")
+                catetoB=prompt("Ingrese el valor del cateto B","")
+                if (!isNaN(parseInt(hipotenusa))&&!isNaN(parseInt(catetoB))) s=false
+                   else alert("Datos ingresados incorrectamente.. Intente nuevamente")
+                   
+                
+                
+            }
                   
                 return Math.sqrt((Math.pow(hipotenusa,2))-Math.pow(catetoA,2))
 
@@ -502,21 +769,48 @@ class formulas2d extends Formulas{
 
         }
         function trianguloEquilatero(){
-
+            let s=true
 
                 function area(){
+                    let s=true
                     let lado=4
+
+                    while(s){
+                       
+                        lado=prompt("agregue el valor del lado del triangulo","")
+
+                        if(!isNaN(parseInt(lado)))s=false
+                            else alert("El valor agregado es incorrecto... Intente nuevamente")
+                            
+                    }
                     let ladopow=Math.pow(lado,2)
                     return ((ladopow)*(Math.sqrt(3)))/4
                 }
 
                 function altura(){
+                    let s=true
                     let lado=4
+                    while(s){
+                       
+                        lado=prompt("agregue el valor del lado del triangulo","")
+
+                        if(!isNaN(parseInt(lado))) s=false
+                          else  alert("El valor agregado es incorrecto... Intente nuevamente")
+                           
+                        
+                    }
+
+
                     return (lado*Math.sqrt(3))/2
                 }
 
-                let desicion=false//aqui se debe de preguntar si desea el area o altura del tringulo equilatero
-                    
+                while(s){
+                    s=false
+                    let request= prompt("Que deseas obtener?\n\n1)Area    2)Altura","")
+
+                const desicion= request=="1" ? true: request=="2"?false:s=true //aqui se debe de preguntar si desea el area o altura del tringulo equilatero
+            }
+
                 if (desicion)return area()
                 else return altura()
 
@@ -576,45 +870,61 @@ class formulas3d extends Formulas{
     }
 
     paralelepipedo(){
-
-        function area(){
+        let s=true
         let base=4
         let altura=3
         let profundidad=5
 
+        function area(base,altura,profundidad){
+        
+
         return (2*(base*altura)+2*(base*profundidad)+2*(altura*profundidad))
         }
-        function volumen(){
-            let base=4
-        let altura=3
-        let profundidad=5
+        function volumen(base,altura,profundidad){
+       
 
         return base*altura*profundidad
 
         }
 
+        while(s){
+         
+            base= prompt("Cual es el valor de la base?","")
+            altura= prompt("Cual es el valor de la altura?","")
+            profundidad= prompt("Cual es el valor de la profundidad?","")
+
+            if(!isNaN(parseInt(base))&&!isNaN(parseInt(altura))&&!isNaN(parseInt(profundidad))) s=false
+               else alert("El valor agregado es incorrecto.. Intente nuevamente","")
+                
+            
+        }
+
         switch(this._accion){
 
             case "area":
-            return area()
+
+            return area(base,altura,profundidad)
             break
             case "volumen":
-                return volumen()
+                return volumen(base,altura,profundidad)
                 break
         }
     }
     esfera(){
-        function area(){
+
+        let radio
+        let s=true
+        function area(r){
             let PI=3.14159
-            let r=6
+           // let r=6
             let rpow=Math.pow(r,2)
 
             return (4*PI*rpow)
         
         }
-        function volumen(){
+        function volumen(r){
             let PI=3.14159
-            let r=9
+           // let r=9
             let rpow=Math.pow(r,3)
 
             return (4*PI*rpow)/3
@@ -623,59 +933,106 @@ class formulas3d extends Formulas{
 
         }
 
+        while(s){
+           
+            radio=prompt("Ingrese el valor del radio de la esfera","")
+            if (!isNaN(parseInt(radio))) s=false
+               else alert("Valor agregador incorrectamente... Intente nuevamente","")
+                
+            
+        }
+
         switch(this._accion){
 
             case "area":
-            return area()
+            return area(radio)
             break
             case "volumen":
-                return volumen()
+                return volumen(radio)
                 break
         }
     }
     cilindro(){
-        function area(){
+        let s=true
+        let radio
+        let altura
+        function area(r,h){
             let PI=3.14159
-            let r=9
-            let h=5
+           // let r=9
+            //let h=5
 
             return 2*PI*r*(r+h)
         }
-        function volumen(){
+        function volumen(r,h){
             let PI=3.14159
-            let r=9
-            let h=5
+           // let r=9
+            //let h=5
             let rpow=Math.pow(r,2)
 
             return PI*rpow*h
 
         }
+        while(s){
+            s=false
+            radio=prompt("Ingrese el valor del radio del cilindro","")
+            altura=prompt("Ingrese la altura del cilindro","")
+            if (!isNaN(parseInt(radio))&&!isNaN(parseInt(altura))) s=false
+              else  alert("Valor agregador incorrectamente... Intente nuevamente","")
+                
+            
+        }
+
 
         switch(this._accion){
 
             case "area":
-            return area()
+            return area(radio,altura)
             break
             case "volumen":
-                return volumen()
+                return volumen(radio,altura)
                 break
         }
     }
     cono(){
         function area(){
+            let s=true
             let PI=3.14159
             let r=9
             let h=5
             let g=8
+
+            while(s){
+                r=prompt("Ingrese el valor del radio","")
+                h=prompt("Ingrese el valor de la altura","")
+                g=prompt("Ingrese el valor de la distancia de la base a la punta del cono","")
+             
+                if (!isNaN(parseInt(r))&&!isNaN(parseInt(h))&&!isNaN(parseInt(g))) s=false
+                    elsealert("Alguno de los datos son incorrector.. Intente nuevamente")
+                    
+            }
+
             let rpow=Math.pow(r,2)
+
 
             return PI*rpow+PI*r*g
 
         }
         function volumen(){
+            let s=true
             let PI=3.14159
             let r=9
             let h=5
+            while(s){
+                r=prompt("Ingrese el valor del radio","")
+                h=prompt("Ingrese el valor de la altura","")
+               
+               
+                if (!isNaN(parseInt(r))&&!isNaN(parseInt(h))) s=false
+                   else alert("Alguno de los datos son incorrector.. Intente nuevamente")
+                   
+            }
+
+
             let rpow=Math.pow(r,2)
 
             return (PI*rpow*h)/3
@@ -683,8 +1040,20 @@ class formulas3d extends Formulas{
         }
 
         function g(){
+            let s=true
             let r=9
             let h=5
+            while(s){
+                r=prompt("Ingrese el valor del radio","")
+                h=prompt("Ingrese el valor de la altura","")
+               
+              
+                if (!isNaN(parseInt(r))&&!isNaN(parseInt(h))) s=false
+                    else alert("Alguno de los datos son incorrector.. Intente nuevamente")
+                    
+                
+            }
+
             return Math.sqrt(Math.pow(r,2)+Math.pow(h,2))
             
 
@@ -706,12 +1075,25 @@ class formulas3d extends Formulas{
     troncoCono(){
         
         function volumen(){
-
+            let s=true
             let PI=3.14159
             let r=9
             let h=5
-            let rpow=Math.pow(r,2)
             let R=10
+            while(s){
+                r=prompt("Ingrese el valor del radio menor","")
+                R=prompt("Ingrese el valor del radio Mayor ","")
+                h=prompt("Ingrese el valor de la altura","")
+               
+              
+                if (!isNaN(parseInt(r))&&!isNaN(parseInt(h))&&!isNaN(parseInt(R)))  s=false
+                    else alert("Alguno de los datos son incorrector.. Intente nuevamente")
+                    
+            }
+
+
+            let rpow=Math.pow(r,2)
+            
             let Rpow=Math.pow(R,2)
 
             return ((PI*h)*(rpow+r*R+Rpow))/3
@@ -733,14 +1115,30 @@ class formulas3d extends Formulas{
 
 
 
+
 let desicion=true
 
-
+let s=true
+let accionF
 let newFormula= new Formulas()
+
+
+while(s){
+    s=false
+ val=prompt("Ingrese la opcion a considerar \n\n1)Formulas 2D   2)Formulas 3D","")
+
+ if (val=="1")desicion=true
+ else if (val=="2")desicion=false
+ else { alert("datos ingresados incorrectamente..Intente nuevamente","")
+s=true}
+
+
+}
 
 if(desicion){
     
     newFormula= new formulas2d(newFormula.formulas2D,newFormula.accion2d)
+    
     
     /*las clases suelen ser muy curiosas de usar ya que desde una sola linea de codigos puedo
                                                                         hacer que mi clase formula2d interactue con la variable newFormula y que esta misma pueda interactuar con
@@ -748,18 +1146,18 @@ if(desicion){
                                                                         
                                                                         Asi que desde aqui comento que las clases es recomendable que tengan clases heredadas para que desde la clase madre
                                                                         se puedan establecer los patrones de comportamiento para como actuen las clase hijos*/
-    console.log(newFormula.nombre)
+    
     
 
 }
 else{
   
     newFormula= new formulas3d(newFormula.formulas3D,newFormula.accion3d)
-
-    console.log(newFormula.nombre)
+    
     
 }
-alert(newFormula._resultado)
+
+alert("Formula del "+newFormula.nombre+":\n\n Del "+newFormula._accion+": "+newFormula._resultado)
 console.log(newFormula)
 
 
