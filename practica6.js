@@ -32,7 +32,7 @@ get formulas2D(){
 
     while(s){
         s=false
-        name=prompt("De que figura deseas obtener su formula?\n\n 1)cuadrado  2)rectangulo 3)paralelogramo  4)trapezoide 5)circulo 6)triangulo  \n\n 0)SALIR","")
+        name=prompt("De que figura deseas obtener su formula?\n\n1)Cuadrado  \n2)Rectangulo \n3)Paralelogramo  \n4)Trapezoide \n5)Circulo \n6)Triangulo  \n\n 0)SALIR","")
     switch((name)){
        
         case "1":
@@ -75,7 +75,7 @@ get formulas3D(){
     let name
     while(s){
         s=false
-        name=prompt("De que figura deseas obtener su formula?\n\n 1)paralelepipedo  2)esfera 3)cilindro  4)cono 5)tronco cono   \n\n 0)SALIR","")
+        name=prompt("De que figura deseas obtener su formula?\n\n1)Paralelepipedo  \n2)Esfera \n3)Cilindro  \n4)Cono \n5)Tronco cono   \n\n 0)SALIR","")
     switch(name){
         case "1":
         this._nombre_figura="paralelepipedo"
@@ -118,7 +118,7 @@ get accion2d(){
                         case "trapezoide":
                
             while(s){
-                select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n 1)area  2)permietro \n\n 0)SALIR","")
+                select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n 1)Area  2)Permietro \n\n 0)SALIR","")
                 s=false
             switch(select){
                 case "1":
@@ -233,10 +233,12 @@ get accion3d(){
 
 
 switch(this._nombre_figura){
-        case "paralelepipedo"||"esfera"||"cilindro":
+        case "paralelepipedo":
+            case "esfera":
+                case "cilindro":
         
             while(s){
-                select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n1)area     2)volumen     0)Salir","")
+                select=prompt(this._nombre_figura+"\n\n\nCual seria la formula?\n\n1)Area     2)Volumen     0)Salir","")
                 s=false
         switch(select){
             case "1":
