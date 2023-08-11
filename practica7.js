@@ -78,6 +78,8 @@ for(i=2; i<=100;i++){
     
 }
 
-console.log(acumulador)
+console.log(acumulador)//En esta practica utilice el bucle for para que en un for se genere otro for para asi poder tener encontrar los recursivos
+
+
 
 
