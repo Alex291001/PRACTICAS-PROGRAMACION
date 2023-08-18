@@ -1,5 +1,8 @@
-# Practicas_de_Javascript
-En este repositorio almacenare todas las practicas relacionadas con javascript para mejorar en dicho lenguaje y tener un repertorio de ello
+# Practicas de Programacion
+En este repositorio almacenare todas las practicas relacionadas con la logica de programacion, para mejorar en varios lenguajes y tener un repertorio de ello
 
-agregare archivo .js con ejercicios resueltos de javascript.
-primero subire un archivo inicio_practico.js
+Generare una carpeta con datos completos acerca de ello.
+
+
+
+
