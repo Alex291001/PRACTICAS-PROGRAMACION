@@ -89,7 +89,7 @@ alert(name2)
 let numName=(Object.keys(name).length)-1//Aqui agregamos el limite y le restamos 1 para que no de errores ya que recordemos que un string es un arreglo de cadenas por lo tanto un arreglo siempre empieza su primer valor almacenado con 0 y el segundo con 1 y asi sucesivamente
 
 
-newName=NewWord(name, numName,"")//nos vamos a la funcion mandando el nombre (name) el limite que es la cantidad de arreglos dentro de nuestro string ejemplo alex(3) a=0 l=1 e=2 x=3 por tanto el limite es 3 y una cadena vacia para que se convierta en el acumulador
+newName=NewWord(name, numName,"")//nos vamos a la funcion mandando el nombre (name) el limite que es la cantidad de arreglos dentro de nuestro string ejemplo alex(3) a=0 l=1 e=2 x=3 por tanto el limite es 3 y una cadena vacia para que se convierta en el acumulador y asi limita a la funcion de manera recursiva de solo pasar hasta que todas las letras ya esten modificada y que no se pase.
 
 
 alert("Tu nuevo nombre en lenguaje Hacker es "+name+": "+newName)//Resultado
