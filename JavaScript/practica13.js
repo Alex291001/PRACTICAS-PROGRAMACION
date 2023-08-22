@@ -58,12 +58,13 @@ return acum
 }
 
 
-let number=42
+let number=prompt("Introduce el valor de un numero para saber si es par, fibonacci o primo","")
 let numero=new Map([["Fibonacci",fibonacci(number)],["par",par(number)],["primo",primo(number)]])//El new map es una de las nuevas caracteristicas de es6 para facili
 
 let request = num(numero,"")
 
 console.log(number+request)
+alert(number+request)
 
 
 
