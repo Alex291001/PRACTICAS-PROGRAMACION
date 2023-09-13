@@ -8,7 +8,7 @@
  * - Ejemplo. Entrada: [("🗿","✂️"), ("✂️","🗿"), ("📄","✂️")]. Resultado: "Player 2".
  * - Debes buscar información sobre cómo se juega con estas 5 posibilidades.
  */
-function reglas(player1,player2){
+function reglas(player1,player2){//Aqui se deben de cumplir las reglas de dicho juego entre dos jugadores
 
 console.log("Confrontacion:\nJugador1:"+player1.ataq+" VS "+"Jugador2:"+player2.ataq)
 
@@ -37,7 +37,7 @@ if(player2.deb1==player1.ataq || player2.deb2==player1.ataq){
 
 }
 
-class player{
+class player{//Esta clase es especificamente para obtener datos de un jugador 
 
     constructor(vida,ataq,deb1,deb2){
         this.deb1=deb1
