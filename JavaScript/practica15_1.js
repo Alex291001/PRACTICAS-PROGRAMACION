@@ -125,7 +125,7 @@ let key=[]
 let i;
 for(i=0;i<=9;i++) key[i]=true
 
-let valor=key.length
+let valor=key
 
 console.log(key.length)
 
@@ -138,5 +138,4 @@ pregunta("", key)
 
 
 console.log(key)                                                        
-
 
