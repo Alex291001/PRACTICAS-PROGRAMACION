@@ -65,7 +65,10 @@ body{
 
 .caja1{
     
-    grid-column: 1/3;/*Esto dara el cambio del tamaño de las cajas */
+    grid-column: 1/3;/*Esto dara el cambio del tamaño de las cajas OJO SE GUIA POR LOS BORDES
+    LOS NUMEROS REPRESENTAN LOS BORDES DE CADA "CAJA" POR LO QUE 1 ES EL PRIMER BORDE Y ASI
+    SUCESIVAMENTE
+    */
     background-color: rgb(28, 142, 241);
     border: 1px solid black;
     font-family: 'Courier New', Courier, monospace;
