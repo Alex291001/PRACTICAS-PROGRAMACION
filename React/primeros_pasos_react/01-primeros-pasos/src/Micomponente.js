@@ -1,5 +1,6 @@
 //importar modulos de react/ dependencias
 import React from 'react';
+
 //funcion del componente
 const Micomponente = () => {
 
@@ -14,7 +15,7 @@ const Micomponente = () => {
     return  (
 
         <div className='Mi-Componente'>
-         <h2>Pagina web de Alex</h2>
+         <h1>Pagina web de Alex</h1>
 
         <hr/>
         
@@ -26,8 +27,10 @@ const Micomponente = () => {
     <li><strong>{usuario.apellido}</strong></li>
     <li><strong>{usuario.matricula}</strong></li>
 </ul>
+
         </div>
 
+       
        
 
         

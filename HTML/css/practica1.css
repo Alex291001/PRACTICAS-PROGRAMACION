@@ -29,7 +29,7 @@ nav ul li{
     background: rgb(30, 255, 0);
 }
 #contenido{
-   background: rgb(54, 189, 54);
+   background: rgb(27, 153, 27);
    float: left;
     width: calc(70% - 2px);
     margin: 0px auto;
@@ -48,7 +48,7 @@ nav ul li{
     
 }
 .article h2{
-    font-size: 25px;
+    font-size: 30px;
 }
 
 header{

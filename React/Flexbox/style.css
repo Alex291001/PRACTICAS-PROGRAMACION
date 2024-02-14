@@ -171,7 +171,7 @@ body{
         margin: 0 auto;
         width: 80%;
         padding: 20px;
-        border: 1px solid black;
+        
 
     }
     .c1{
@@ -222,9 +222,9 @@ body{
     .c6{
         grid-area: footer;
         background-color: rgb(128, 240, 128);
-        border: 1px solid black;
+        
         font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
-        line-height: 120px;
-        text-align: center;
+       
+        
     }
