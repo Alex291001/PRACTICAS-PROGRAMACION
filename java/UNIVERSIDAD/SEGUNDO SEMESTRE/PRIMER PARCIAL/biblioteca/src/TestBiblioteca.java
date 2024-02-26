@@ -5,7 +5,7 @@ public class TestBiblioteca {
     public static Autor[] autores = new Autor[10];
     //El ArrayList se utiliza para que nosotros podamos tener mejor interaccion con nuestro lista
     public static ArrayList<Autor> lista = new ArrayList<Autor>();
-
+    static ArrayList<Libro> libros = new ArrayList<>();
     public static ArrayList<Integer> lista2 = new ArrayList<>();//para probar como funciona
     public static int pos = 0;
 
@@ -47,6 +47,7 @@ public class TestBiblioteca {
             for (i = 0; i < lista.size(); i++)
 
                 autores[i] = lista.get(i);
+            Autor a;
 
             //System.out.println(lista);
             System.out.println("**********BIBLIOTECA******");
@@ -55,6 +56,7 @@ public class TestBiblioteca {
             System.out.println("3.- Listar");
             System.out.println("4.- Eliminar");
             System.out.println("5.- Modificar");
+
             System.out.println("0.- Salir");
 
             op = lector.nextInt();//agregar texto
