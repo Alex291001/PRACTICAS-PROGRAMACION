@@ -22,6 +22,43 @@ public class Autor {
 
     }
 
+    public int getId(){
+        return id;
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public String getaPaterno(){
+        return aPaterno;
+    }
+    public String getaMaterno(){
+        return aMaterno;
+    }
+    public String getCiudad(){
+        return ciudad;
+    }
+    //Los set
+    public void setId(int id){
+        this.id=id;
+
+    }
+    public void setNombre(String nombre){
+        this.nombre=nombre;
+
+    }
+    public void setaPaterno(String aPaterno){
+        this.aPaterno=aPaterno;
+
+    }
+    public void setaMaterno(String aMaterno){
+        this.aMaterno=aMaterno;
+
+    }
+    public void setCiudad(String ciudad){
+        this.ciudad=ciudad;
+
+    }
+
 
 
 }
