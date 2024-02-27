@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;//importar entrada de datos
 
 public class TestBiblioteca {
-    public  static Scanner lector = new Scanner(System.in);//Entrada de datos desde el teclado
+    public static Scanner lector = new Scanner(System.in);//Entrada de datos desde el teclado
     // public static Autor[] autores = new Autor[10];
     //El ArrayList se utiliza para que nosotros podamos tener mejor interaccion con nuestro lista
     public static ArrayList<Autor> Autores = new ArrayList<Autor>();
@@ -10,7 +10,6 @@ public class TestBiblioteca {
     static ArrayList<Editorial> Editoriales = new ArrayList<>();
     //public static ArrayList<Integer> lista2 = new ArrayList<>();//para probar como funciona
     public static int pos = 0;
-
 
 
     public static void main(String[] args) {
@@ -118,10 +117,10 @@ public class TestBiblioteca {
                     break;
 
                 case 3://AGREGAR LIBRO
-                    c= RegistrarLibro();
-                    if (c!=null)libros.add(c);
-                        else {
-                            System.out.println("No se pudo registrar el Libro");
+                    c = RegistrarLibro();
+                    if (c != null) libros.add(c);
+                    else {
+                        System.out.println("No se pudo registrar el Libro");
                     }
 
                    /* System.out.println("LISTAR AUTORES");
@@ -137,7 +136,6 @@ public class TestBiblioteca {
             if (lista.isEmpty()) System.out.println("***LA LISTA ESTA VACÍA*****");*/
 
 
-
                     break;
 
                 case 4:
@@ -146,7 +144,7 @@ public class TestBiblioteca {
                     System.out.println("Agregar id del autor");
                     id = lector.nextInt();
                     //Se va directamente con el metodo buscar autor y manda 1 0 -1
-                 if( BuscarAutor(id, 1, false)==null) {
+                    if (BuscarAutor(id, 1, false) == null) {
 
                         System.out.println("No se encontro el autor solicitado...Se agregaran nuevos dato de casilla vacía");
                         System.out.println("");
@@ -162,7 +160,7 @@ public class TestBiblioteca {
                     System.out.println("Agregar id del EDITORIAL");
                     id = lector.nextInt();
                     //edit=BuscarEditorial(id,0);
-                    if((edit=BuscarEditorial(id))==null){
+                    if ((edit = BuscarEditorial(id)) == null) {
                         System.out.println("No se encontro el Editorial solicitado...Se agregaran nuevos dato de casilla vacía");
                         System.out.println("");
                         System.out.println("Inserta nuevos datos");
@@ -288,6 +286,21 @@ public class TestBiblioteca {
                         System.out.println("id: " + n.id);
                         System.out.println("Nombre: " + n.nombre + " " + n.aPaterno + " " + n.aMaterno);
                     }
+                    System.out.println("*********************************************************************************");
+                    System.out.println("LISTAR EDITORIALES");
+                    for (Editorial n : Editoriales) {
+                        System.out.println("id: " + n.getId());
+                        System.out.println("Nombre: " + n.getNombre() + " " + n.getDireccion() + " " + n.getTelefono() + " " + n.getCiudad());
+                    }
+
+                    System.out.println("*********************************************************************************");
+                    System.out.println("LISTAR LIBROS");
+                    for (Libro n : libros) {
+                        ArrayList<Autor> p= n.getAutores();
+                        
+                        System.out.println("id: " + n.getIsbm());
+                        System.out.println("Nombre: " + n.gettitulo() + " " + n.getEdicion() + " " + n.getEditorial() + " " + n.getAutores());
+                    }
                     break;
 
             }
@@ -296,8 +309,6 @@ public class TestBiblioteca {
 
 
     }
-
-
 
 
     public static Autor registrarAutor() {
@@ -380,8 +391,6 @@ public class TestBiblioteca {
     }
 
 
-
-
     public static Autor BuscarAutor(int id, int opc, boolean n) {
 //Se manda al metodo OperacionBusqueda que es el cual realiza todo el movimiento y es sumamente reutilizable
         return OperacionBusqueda(id, opc, n);
@@ -399,7 +408,8 @@ public class TestBiblioteca {
         return OperacionBusqueda(id, opc, n);
 
     }
-    public static Editorial BuscarEditorial(int id){
+
+    public static Editorial BuscarEditorial(int id) {
 
         for (Editorial i : Editoriales) {
             if (id == i.getId() && i != null) {
@@ -416,42 +426,41 @@ public class TestBiblioteca {
             }
         }
 
-return null;
+        return null;
     }
 
 
-    public static Libro RegistrarLibro(){
+    public static Libro RegistrarLibro() {
         Scanner lector = new Scanner(System.in);//Entrada de datos desde el teclado
-        int isbn,opc=1;
+        int isbn, opc = 1;
         String titulo;
         String edicion;
         String genero;
         Editorial editorial;
-        ArrayList<Autor> autores= new ArrayList<>();
+        ArrayList<Autor> autores = new ArrayList<>();
         System.out.println("ISBN ");
-        isbn =lector.nextInt();
+        isbn = lector.nextInt();
         System.out.println("Titulo");
-        titulo=lector.next();
+        titulo = lector.next();
         System.out.println("edicion");
-        edicion=lector.next();
+        edicion = lector.next();
         System.out.println("Genero");
-        genero=lector.next();
+        genero = lector.next();
         System.out.println("ID de editorial");
-        int idEditorial= lector.nextInt();
+        int idEditorial = lector.nextInt();
         editorial = BuscarEditorial(idEditorial);
         System.out.println("Introduce el id del autor");
         int idAutores;
-        while (opc!=0){
-        idAutores =lector.nextInt();
-        Autores.add(BuscarAutor(idAutores,1,false));
+        while (opc != 0) {
+            idAutores = lector.nextInt();
+            Autores.add(BuscarAutor(idAutores, 1, false));
             System.out.println("Existen mas autores? 0)NO 1)SI");
+            opc = lector.nextInt();
+
         }
 
 
-
-
-
-        Libro libro = new Libro(isbn,titulo,edicion,genero,editorial,autores);
+        Libro libro = new Libro(isbn, titulo, edicion, genero, editorial, autores);
 
 
         return libro;

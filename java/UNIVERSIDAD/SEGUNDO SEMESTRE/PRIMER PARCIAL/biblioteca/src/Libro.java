@@ -34,7 +34,7 @@ public class Libro {
         return editorial;
     }
 
-    public ArrayList<Autor> SetAutores(){
+    public ArrayList<Autor> getAutores(){
         return autores;
     }
     //Los set
