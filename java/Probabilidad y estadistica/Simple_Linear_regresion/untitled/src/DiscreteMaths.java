@@ -1,4 +1,4 @@
-﻿public class DiscreteMaths {
+public class DiscreteMaths {
 
     public DiscreteMaths() {
 
@@ -20,7 +20,7 @@
 
         return totalY;
     }
-/*
+
 
     public int NsumYX(int y[], int x[]){
         int totalXY=0;
@@ -37,6 +37,6 @@
         }
         return SumXPow*x.length;
 
-     }*/
+     }
 
 }

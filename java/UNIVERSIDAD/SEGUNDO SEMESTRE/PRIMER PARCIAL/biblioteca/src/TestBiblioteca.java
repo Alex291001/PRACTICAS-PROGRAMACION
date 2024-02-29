@@ -297,7 +297,7 @@ public class TestBiblioteca {
                     System.out.println("LISTAR LIBROS");
                     for (Libro n : libros) {
                         ArrayList<Autor> p= n.getAutores();
-                        
+
                         System.out.println("id: " + n.getIsbm());
                         System.out.println("Nombre: " + n.gettitulo() + " " + n.getEdicion() + " " + n.getEditorial() + " " + n.getAutores());
                     }
