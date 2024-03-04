@@ -296,10 +296,14 @@ public class TestBiblioteca {
                     System.out.println("*********************************************************************************");
                     System.out.println("LISTAR LIBROS");
                     for (Libro n : libros) {
-                        ArrayList<Autor> p= n.getAutores();
+                        ArrayList<Autor> p = n.getAutores();
 
-                        System.out.println("id: " + n.getIsbm());
-                        System.out.println("Nombre: " + n.gettitulo() + " " + n.getEdicion() + " " + n.getEditorial() + " " + n.getAutores());
+                        System.out.println("Isbm: " + n.getIsbm());
+                        System.out.print("Nombre: " + n.gettitulo() + " " + n.getEdicion() + " " + n.getEditorial().getNombre() + " ");
+                        for (Autor autores : n.getAutores()) {
+                            System.out.println(autores.nombre+" "+autores.aMaterno+" "+autores.aPaterno);
+
+                        }
                     }
                     break;
 
@@ -453,7 +457,7 @@ public class TestBiblioteca {
         int idAutores;
         while (opc != 0) {
             idAutores = lector.nextInt();
-            Autores.add(BuscarAutor(idAutores, 1, false));
+            autores.add(BuscarAutor(idAutores, 1, false));
             System.out.println("Existen mas autores? 0)NO 1)SI");
             opc = lector.nextInt();
 

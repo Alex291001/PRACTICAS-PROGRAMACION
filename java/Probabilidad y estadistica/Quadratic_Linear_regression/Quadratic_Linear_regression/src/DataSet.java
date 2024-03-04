@@ -5,8 +5,8 @@ public class DataSet {
 
 
     public DataSet() {
-        x = new int[]{1, 1, 1, 1, 1};
-        y = new int[]{1, 21, 41, 69, 105};
+        x = new int[]{1, 2, 3, 4, 5};
+        y = new int[]{9, 21, 41, 69, 105};
     }
 
     public int[] getX() {
