@@ -1,9 +1,10 @@
 public class Futbolista extends SeleccionFutbol{
     private int dorsal;
     private String demarcacion;
-    public Futbolista(int id, String Nombre, String Apellidos, int Edad) {
+    public Futbolista(int id, String Nombre, String Apellidos, int Edad, String demarcacion, int dorsal) {
         super(id, Nombre, Apellidos, Edad);
     }
+    public Futbolista(){}
 
     public void setDemarcacion(String demarcacion) {
         this.demarcacion = demarcacion;

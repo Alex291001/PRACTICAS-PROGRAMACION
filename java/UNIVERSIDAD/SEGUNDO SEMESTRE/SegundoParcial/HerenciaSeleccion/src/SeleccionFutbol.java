@@ -15,7 +15,9 @@ public class SeleccionFutbol {
      this.Edad=Edad;
  }
 
+    public SeleccionFutbol() {
 
+    }
 
     public void Concentrarse(){
      System.out.println("Estamos concentrados");
