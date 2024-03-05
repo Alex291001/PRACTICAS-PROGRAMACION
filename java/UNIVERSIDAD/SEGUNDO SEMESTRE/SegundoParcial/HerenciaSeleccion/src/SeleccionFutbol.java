@@ -5,6 +5,8 @@ public class SeleccionFutbol {
     protected String Apellidos;
     protected int Edad;
 
+
+
  public SeleccionFutbol(int id, String Nombre, String Apellidos, int Edad){
 
      this.id=id;
@@ -13,7 +15,9 @@ public class SeleccionFutbol {
      this.Edad=Edad;
  }
 
- public void Concentrarse(){
+
+
+    public void Concentrarse(){
      System.out.println("Estamos concentrados");
  }
 
