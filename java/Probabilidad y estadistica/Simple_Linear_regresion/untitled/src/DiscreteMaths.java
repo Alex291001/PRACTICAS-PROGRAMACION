@@ -2,6 +2,8 @@ public class DiscreteMaths {
 
     public DiscreteMaths() {
 
+
+
     }
 
     public int sumX(int x[]) {

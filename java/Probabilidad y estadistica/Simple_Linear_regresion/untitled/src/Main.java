@@ -12,8 +12,7 @@ public class Main {
         double SigYimB1SigXi= dm.sumY(ds.getY())-(b1*dm.sumX(ds.getX()));
         double b0=SigYimB1SigXi/ds.getX().length;
 
-        //System.out.println(dm.sumX(ds.getX()));//paso 4
-        //System.out.println(dm.sumY(ds.getY()));//paso5
+
 
 
         System.out.println("B1 =" + b1);

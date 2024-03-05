@@ -12,10 +12,9 @@ public class TestSeleccion {
     public static Entrenador entrenador = new Entrenador();
 
 
-
     public static void main(String[] args) {
 
-
+        int id;
         int opc;
 
         do {
@@ -24,9 +23,7 @@ public class TestSeleccion {
             System.out.println("1) Agregar Futbolista ");
             System.out.println("2) Agregar Entrenador");
             System.out.println("3) Agregar Masajista");
-            System.out.println("4) Buscar Futbolista");
-            System.out.println("5) Buscar Entrenador");
-            System.out.println("6) Buscar Masajista");
+            System.out.println("4) Buscar");
             System.out.println("0)Salir");
             System.out.println("************************************************");
             opc = lector.nextInt();
@@ -41,11 +38,12 @@ public class TestSeleccion {
                     registrarMasajista();
                     break;
                 case 4:
+
+                    System.out.println("ID integrante");
+                    id = lector.nextInt();
+                    buscarIntegrante(id);
                     break;
-                case 5:
-                    break;
-                case 6:
-                    break;
+
 
                 case 0:
                     System.out.println("Saliendo");
@@ -57,10 +55,8 @@ public class TestSeleccion {
         } while (opc != 0);
 
 
-
-
-
     }
+
     static void registrarFutbolista() {
 
         int id, edad, dorsal;
@@ -69,16 +65,16 @@ public class TestSeleccion {
         System.out.println("ID:");
         id = lector.nextInt();
         System.out.println("NOMBRE:");
-        edad = lector.nextInt();
-        System.out.println("APELLIDOS:");
         nombre = lector.next();
-        System.out.println("EDAD");
+        System.out.println("APELLIDOS:");
         apellidos = lector.next();
+        System.out.println("EDAD");
+        edad = lector.nextInt();
         System.out.println("DORSAL:");
-        dorsal=lector.nextInt();
+        dorsal = lector.nextInt();
 
         System.out.println("DEMARCACION:");
-        demarcacion= lector.next();
+        demarcacion = lector.next();
 
         futbolista.setId(id);
         futbolista.setEdad(edad);
@@ -89,6 +85,7 @@ public class TestSeleccion {
 
         seleccion.add(futbolista);
     }
+
     static void registrarMasajista() {
 
         int id, edad;
@@ -97,15 +94,15 @@ public class TestSeleccion {
         System.out.println("ID:");
         id = lector.nextInt();
         System.out.println("NOMBRE:");
-        edad = lector.nextInt();
-        System.out.println("APELLIDOS:");
         nombre = lector.next();
-        System.out.println("EDAD");
+        System.out.println("APELLIDOS:");
         apellidos = lector.next();
+        System.out.println("EDAD");
+        edad = lector.nextInt();
 
 
         System.out.println("TITULACION:");
-        Titulacion= lector.next();
+        Titulacion = lector.next();
 
         masajista.setId(id);
         masajista.setEdad(edad);
@@ -115,22 +112,22 @@ public class TestSeleccion {
 
         seleccion.add(masajista);
     }
+
     static void registrarEntrenador() {
 
         int id, edad;
-        String nombre, apellidos,idFederacion;
+        String nombre, apellidos, idFederacion;
 
         System.out.println("ID:");
         id = lector.nextInt();
         System.out.println("NOMBRE:");
-        edad = lector.nextInt();
-        System.out.println("APELLIDOS:");
         nombre = lector.next();
-        System.out.println("EDAD");
+        System.out.println("APELLIDOS:");
         apellidos = lector.next();
+        System.out.println("EDAD");
+        edad = lector.nextInt();
         System.out.println("ifFederacion:");
-        idFederacion=lector.next();
-
+        idFederacion = lector.next();
 
 
         entrenador.setId(id);
@@ -144,6 +141,26 @@ public class TestSeleccion {
     }
 
 
+    static void buscarIntegrante(int id) {
 
+        for (SeleccionFutbol integrante : seleccion) {
+            if (integrante.getId() == id)
+
+                if (integrante instanceof Entrenador) {
+
+                    ((Entrenador) integrante).dirigirPartido();
+                    ((Entrenador) integrante).dirigirEntrenamiento();
+
+                } else if (integrante instanceof Futbolista) {
+                    ((Futbolista) integrante).jugarPartido();
+                    ((Futbolista) integrante).entrenar();
+
+
+                } else {
+                    ((Masajista) integrante).darMasaje();
+                }
+
+        }
+    }
 
 }

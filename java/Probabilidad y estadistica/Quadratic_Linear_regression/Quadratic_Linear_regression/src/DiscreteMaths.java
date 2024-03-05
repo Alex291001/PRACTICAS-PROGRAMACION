@@ -5,7 +5,7 @@ public class DiscreteMaths {
 
     public Object DiscreteMaths(int[] x, int[] y, int n) {
         double dt = 0.0;
-        int SumX, SumY, SumX2, SumX3, SumX4, SumXY, SumX2Y, ds,r;
+        double SumX, SumY, SumX2, SumX3, SumX4, SumXY, SumX2Y, ds,r;
 
         this.x = x;
         this.y = y;
