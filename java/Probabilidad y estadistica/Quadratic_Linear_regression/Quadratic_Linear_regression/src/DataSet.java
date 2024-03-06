@@ -1,19 +1,19 @@
 public class DataSet {
 
-    private int[] x;
-    private int[] y;
+    private double[] x;
+    private double[] y;
 
 
     public DataSet() {
-        x = new int[]{651, 762, 856, 1063, 1190,1298,1421,1440,1518};
-        y = new int[]{23, 25, 30, 34,43,48,52,57,58 };
+        x = new double[]{-3,-2,-1,0,1,2,3};
+        y = new double[]{7.5,3,0.5,1,3,6,14};
     }
 
-    public int[] getX() {
+    public double[] getX() {
         return this.x;
     }
 
-    public int[] getY() {
+    public double[] getY() {
         return this.y;
     }
 }
