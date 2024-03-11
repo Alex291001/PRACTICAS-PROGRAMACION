@@ -32,14 +32,15 @@ public class DataSet {
     public String bParentesis(TextView tv) {
         String s = tv.getText().toString();
         char[] n = s.toCharArray();
-        String r;
+        String r,Data=tv.getText().toString();
 
-        for (int i = 0; i < n.length; i++) {
+        /*for (int i = 0; i < n.length; i++) {
             char characterN = n[i];
 
 
-        }
-        return "(";
+        }*/
+        if (Data=="") return "";
+        else  return "("+tv.getText().toString()+")";
     }
 
     public String bModulo(){
@@ -65,6 +66,44 @@ public class DataSet {
     public String b4(){
         return "4";
     }
+
+    public String b5(){
+        return "5";
+    }
+    public String b6(){
+        return "6";
+    }
+    public String bMenos(){
+        return "-";
+    }
+
+    public String b1(){
+        return "1";
+    }
+
+    public String b2(){
+        return "2";
+    }
+    public String b3(){
+        return "3";
+    }
+
+    public String bMas(){
+        return "+";
+    }
+    public String bMasMenos() {
+        return "-";
+    }
+
+    public String b0(){
+        return "0";
+    }
+    public String bPunto(){
+        return ".";
+    }
+
+
+
 
 }
 

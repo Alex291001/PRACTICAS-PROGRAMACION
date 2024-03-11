@@ -16,6 +16,7 @@ public class Libro {
         this.editorial=editorial;
         this.autores=autores;
     }
+    public Libro(){}
 
 
     public int getIsbm(){
@@ -54,7 +55,7 @@ public class Libro {
         this.genero=genero;
 
     }
-    public void setTitulo(Editorial editorial){
+    public void setEditorial(Editorial editorial){
         this.editorial=editorial;
 
     }

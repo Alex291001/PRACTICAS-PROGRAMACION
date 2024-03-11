@@ -20,30 +20,20 @@ public class TestBiblioteca {
         int idEdit;
         Editorial edit = new Editorial();
 
-        Autor autor1 = new Autor(0, "Gabriel", "Garcia", "Marquez", "CiudadMexico");
-        Autor autor2 = new Autor(1, "Haruki", "Murakami", "Murakami", "Japon");
-        Autor autor3 = new Autor(2, "Joanne", "Rowling", "Rowling", "Escocia");
-        Autor autor4 = new Autor(3, "Paulo", "Coelho", "Souza", "Janeiro");
-        Autor autor5 = new Autor(4, "Sthephen", "Edwin", "King", "Bangor");
-
-        Autores.add(autor1);
-        Autores.add(autor2);
-        Autores.add(autor3);
-        Autores.add(autor4);
-        Autores.add(autor5);
+        Autores.add(new Autor(0, "Gabriel", "Garcia", "Marquez", "CiudadMexico"));
+        Autores.add(new Autor(1, "Haruki", "Murakami", "Murakami", "Japon"));
+        Autores.add(new Autor(2, "Joanne", "Rowling", "Rowling", "Escocia"));
+        Autores.add(new Autor(3, "Paulo", "Coelho", "Souza", "Janeiro"));
+        Autores.add(new Autor(4, "Sthephen", "Edwin", "King", "Bangor"));
 
 
-        Editorial editorial1 = new Editorial(0, "Sudamerica", "Buenos aires", "1231231", "Argentina");
-        Editorial editorial2 = new Editorial(1, "Tusquets", "Barcelona", "520232032", "España");
-        Editorial editorial3 = new Editorial(2, "Bloomsbury", "Londres", "5201923102", "Reino Unido");
-        Editorial editorial4 = new Editorial(3, "Planeta", "Nueva York", "331298379", "USA");
-        Editorial editorial5 = new Editorial(4, "Viking", "sanMatias", "331230022", "NuevaYork");
+        Editoriales.add(new Editorial(0, "Sudamerica", "Buenos aires", "1231231", "Argentina"));
+        Editoriales.add(new Editorial(1, "Tusquets", "Barcelona", "520232032", "España"));
+        Editoriales.add(new Editorial(2, "Bloomsbury", "Londres", "5201923102", "Reino Unido"));
+        Editoriales.add(new Editorial(3, "Planeta", "Nueva York", "331298379", "USA"));
+        Editoriales.add(new Editorial(4, "Viking", "sanMatias", "331230022", "NuevaYork"));
 
-        Editoriales.add(editorial1);
-        Editoriales.add(editorial2);
-        Editoriales.add(editorial3);
-        Editoriales.add(editorial4);
-        Editoriales.add(editorial5);
+   
 
 
         Autor a;
@@ -160,7 +150,7 @@ public class TestBiblioteca {
                     System.out.println("Agregar id del EDITORIAL");
                     id = lector.nextInt();
                     //edit=BuscarEditorial(id,0);
-                    if ((edit = BuscarEditorial(id)) == null) {
+                    if ((edit = BuscarEditorial(id, 0)) == null) {
                         System.out.println("No se encontro el Editorial solicitado...Se agregaran nuevos dato de casilla vacía");
                         System.out.println("");
                         System.out.println("Inserta nuevos datos");
@@ -176,8 +166,16 @@ public class TestBiblioteca {
                     System.out.println("VALORES INCORRECTOS.. INTENTA NUEVAMENTE..");
 
                 case 6:
+                    System.out.println("BUSCAR LIBRO");
+
+                    BuscarLibro();
                     break;
                 case 7:
+                    System.out.println("MODIFICAR LIBRO");
+
+                    ModificarLibro();
+
+
                     break;
                 case 8:
                     System.out.println("MODIFICAR EDITORIAL");
@@ -240,6 +238,32 @@ public class TestBiblioteca {
 
                     break;
                 case 10:
+
+                    System.out.println("ELIMINAR LIBRO");
+                    System.out.println("Agrega el id del libro");
+                    int opc = 0;
+                    id = lector.nextInt();
+                    for (Libro n : libros) {
+                        if (id == n.getIsbm() && n != null) {
+                            opc = 1;
+                            System.out.println("ID " + n.getIsbm());
+                            System.out.println("Nombre: " + n.gettitulo());
+                            System.out.println("Edicion " + n.getEdicion());
+                            System.out.println("Genero " + n.getGenero());
+                            System.out.println("Editorial " + n.getEditorial().getNombre());
+                            System.out.println("Autor/es ");
+                            for (Autor autores : n.getAutores())
+                                System.out.println(autores.nombre + " " + autores.aMaterno + " " + autores.aPaterno);
+                            System.out.println("Deseas Eliminar el libro? 1)Y 0)N");
+                            elimEdit = lector.nextInt();
+
+                            if (elimEdit == 1) libros.remove(n);
+
+                            indexEdit = 1;
+
+                        }
+                    }
+                    if (opc == 0) System.out.println("No se encontro el libro");
                     break;
                 case 11:
                     System.out.println("ELIMINAR EDITORIAL");
@@ -301,7 +325,7 @@ public class TestBiblioteca {
                         System.out.println("Isbm: " + n.getIsbm());
                         System.out.print("Nombre: " + n.gettitulo() + " " + n.getEdicion() + " " + n.getEditorial().getNombre() + " ");
                         for (Autor autores : n.getAutores()) {
-                            System.out.println(autores.nombre+" "+autores.aMaterno+" "+autores.aPaterno);
+                            System.out.println(autores.nombre + " " + autores.aMaterno + " " + autores.aPaterno);
 
                         }
                     }
@@ -314,9 +338,63 @@ public class TestBiblioteca {
 
     }
 
+    public static Libro RegistrarLibro() {
+        // Scanner lector = new Scanner(System.in);//Entrada de datos desde el teclado
+        int isbn, opc = 1;
+
+        String titulo;
+        String edicion;
+        String genero;
+        Editorial editorial = null;
+        ArrayList<Autor> autores = new ArrayList<>();
+        System.out.println("ISBN ");
+        isbn = lector.nextInt();
+
+        System.out.println("Titulo");
+        titulo = lector.next();
+        System.out.println("edicion");
+        edicion = lector.next();
+        System.out.println("Genero");
+        genero = lector.next();
+        int idEditorial = 0;
+        do {
+            System.out.println("ID de editorial");
+            idEditorial = lector.nextInt();
+            if (BuscarEditorial(idEditorial, 0) != null) {
+                opc = 0;
+                editorial = BuscarEditorial(idEditorial, 1);
+            } else System.out.println("Datos incorrectos");
+
+        } while (opc != 0);
+
+        int idAutores;
+        opc = 1;
+
+        do {
+            System.out.println("Introduce el id del autor");
+            idAutores = lector.nextInt();
+            if (OperacionBusqueda(idAutores, 1, false, false) == null) {
+
+                System.out.println("No se encontro el autor solicitado..Intente nuevamente");
+
+            } else {
+                autores.add(BuscarAutor(idAutores, 1, false));
+                System.out.println("Existen mas autores? 0)NO 1)SI");
+                opc = lector.nextInt();
+            }
+
+
+        } while (opc != 0);
+
+
+        Libro libro = new Libro(isbn, titulo, edicion, genero, editorial, autores);
+
+
+        return libro;
+    }
 
     public static Autor registrarAutor() {
-        Scanner lector = new Scanner(System.in);//Entrada de datos desde el teclado
+        //  Scanner lector = new Scanner(System.in);//Entrada de datos desde el teclado
         int id;
 
 
@@ -348,7 +426,7 @@ public class TestBiblioteca {
     }
 
     //Este metodo sirve para que pueda hacer la busqueda del id, se utilizara demasiado.
-    public static Autor OperacionBusqueda(int id, int opc, boolean n) {
+    public static Autor OperacionBusqueda(int id, int opc, boolean n, boolean d) {
         Scanner lector = new Scanner(System.in);
         int i;
         Autor a;
@@ -358,11 +436,13 @@ public class TestBiblioteca {
             if (m != null && m.id == id) {
                 //
                 //System.out.println(lista2.contains(i));
-                System.out.println("autores= id: " + m.getId());
+                if (d) {
+                    System.out.println("autores= id: " + m.getId());
 
 
-                System.out.println("autores= Nombre: " + m.getNombre() + " " + m.getaPaterno() + " " + m.getaMaterno());
-                System.out.println("Ciudad: " + m.getCiudad());
+                    System.out.println("autores= Nombre: " + m.getNombre() + " " + m.getaPaterno() + " " + m.getaMaterno());
+                    System.out.println("Ciudad: " + m.getCiudad());
+                }
 
                 //regresa 1 para dar a entender que se ejecuto y no necesita nada mas
                 if (opc == 2) {
@@ -395,33 +475,68 @@ public class TestBiblioteca {
     }
 
 
+    public static void BuscarLibro() {
+
+        System.out.println("Agrega el isbm del libro");
+        int id;
+        id = lector.nextInt();
+        int idopc = 0;
+
+
+        for (Libro n : libros) {
+            if (id == n.getIsbm() && n != null) {
+                System.out.println("ISBM " + n.getIsbm());
+                System.out.println("Titulo: " + n.gettitulo());
+                System.out.println("Edicion " + n.getEdicion());
+                System.out.println("Editorial " + n.getEditorial().getNombre());
+                System.out.println("Autor/es ");
+                for (Autor autores : n.getAutores())
+                    System.out.println(autores.nombre + " " + autores.aMaterno + " " + autores.aPaterno);
+                idopc = 1;
+            }
+        }
+        if (idopc == 0) {
+            System.out.println("No se encontraron los valores");
+            System.out.println("Desea agregar nuevo libro? 1)Y 0)N");
+            idopc = lector.nextInt();
+            if (idopc == 1) {
+                Libro libro = new Libro();
+                libro = RegistrarLibro();
+                libros.add(libro);
+            }
+        }
+
+    }
+
     public static Autor BuscarAutor(int id, int opc, boolean n) {
 //Se manda al metodo OperacionBusqueda que es el cual realiza todo el movimiento y es sumamente reutilizable
-        return OperacionBusqueda(id, opc, n);
+        return OperacionBusqueda(id, opc, n, true);
 
     }
 
     public static Autor EliminarAutor(int id, int opc, boolean n) {
 //Se manda al metodo OperacionBusqueda que es el cual realiza todo el movimiento y es sumamente reutilizable
-        return OperacionBusqueda(id, opc, n);
+        return OperacionBusqueda(id, opc, n, true);
 
     }
 
     public static Autor ModificarAutor(int id, int opc, boolean n) {
 //Se manda al metodo OperacionBusqueda que es el cual realiza todo el movimiento y es sumamente reutilizable
-        return OperacionBusqueda(id, opc, n);
+        return OperacionBusqueda(id, opc, n, true);
 
     }
 
-    public static Editorial BuscarEditorial(int id) {
+    public static Editorial BuscarEditorial(int id, int d) {
 
         for (Editorial i : Editoriales) {
             if (id == i.getId() && i != null) {
-                System.out.println("ID " + i.getId());
-                System.out.println("Nombre: " + i.getNombre());
-                System.out.println("Direccion " + i.getDireccion());
-                System.out.println("Telefono " + i.getTelefono());
-                System.out.println("Ciudad " + i.getCiudad());
+                if (d == 1) {
+                    System.out.println("ID " + i.getId());
+                    System.out.println("Nombre: " + i.getNombre());
+                    System.out.println("Direccion " + i.getDireccion());
+                    System.out.println("Telefono " + i.getTelefono());
+                    System.out.println("Ciudad " + i.getCiudad());
+                }
 
 
                 return i;
@@ -434,41 +549,90 @@ public class TestBiblioteca {
     }
 
 
-    public static Libro RegistrarLibro() {
-        Scanner lector = new Scanner(System.in);//Entrada de datos desde el teclado
-        int isbn, opc = 1;
-        String titulo;
-        String edicion;
-        String genero;
-        Editorial editorial;
-        ArrayList<Autor> autores = new ArrayList<>();
-        System.out.println("ISBN ");
-        isbn = lector.nextInt();
-        System.out.println("Titulo");
-        titulo = lector.next();
-        System.out.println("edicion");
-        edicion = lector.next();
-        System.out.println("Genero");
-        genero = lector.next();
-        System.out.println("ID de editorial");
-        int idEditorial = lector.nextInt();
-        editorial = BuscarEditorial(idEditorial);
-        System.out.println("Introduce el id del autor");
-        int idAutores;
-        while (opc != 0) {
-            idAutores = lector.nextInt();
-            autores.add(BuscarAutor(idAutores, 1, false));
-            System.out.println("Existen mas autores? 0)NO 1)SI");
-            opc = lector.nextInt();
+    public static void ModificarLibro() {
 
+
+        System.out.println("Agrega el isbm del libro");
+        int id;
+        boolean d = false;
+        id = lector.nextInt();
+        int idopc = 0;
+
+
+        for (Libro n : libros) {
+            if (id == n.getIsbm() && n != null) {
+                d = true;
+                System.out.println("ISBM " + n.getIsbm());
+                System.out.println("Titulo: " + n.gettitulo());
+                System.out.println("Edicion " + n.getEdicion());
+                System.out.println("Editorial " + n.getEditorial().getNombre());
+                System.out.println("Autor/es ");
+                for (Autor autores : n.getAutores())
+                    System.out.println(autores.nombre + " " + autores.aMaterno + " " + autores.aPaterno);
+
+                System.out.println("Deseas modificar el libro? 1)Y 0)N");
+                idopc = lector.nextInt();
+                if (idopc == 1) {
+                    int isbn, opc = 1;
+                    String titulo;
+                    String edicion;
+                    String genero;
+                    Editorial editorial;
+                    ArrayList<Autor> autores = new ArrayList<>();
+                    System.out.println("ISBN ");
+                    isbn = lector.nextInt();
+
+                    System.out.println("Titulo");
+                    titulo = lector.next();
+                    System.out.println("edicion");
+                    edicion = lector.next();
+                    System.out.println("Genero");
+                    genero = lector.next();
+                    System.out.println("ID de editorial");
+                    int idEditorial = lector.nextInt();
+                    editorial = BuscarEditorial(idEditorial, 0);
+                    System.out.println("Introduce el id del autor");
+                    int idAutores;
+                    while (opc != 0) {
+                        idAutores = lector.nextInt();
+                        if (BuscarAutor(idAutores, 1, false) == null) {
+
+                            System.out.println("No se encontro el autor solicitado..Intente nuevamente");
+                        } else {
+                            autores.add(BuscarAutor(idAutores, 1, false));
+                        }
+                        System.out.println("Existen mas autores? 0)NO 1)SI");
+                        opc = lector.nextInt();
+
+                    }
+
+                    n.setAutores(autores);
+                    n.setIsbm(isbn);
+                    n.setTitulo(titulo);
+                    n.setEdicion(edicion);
+                    n.setGenero(genero);
+                    n.setEditorial(editorial);
+                }
+
+
+            }
+        }
+
+        if (d == false) {
+
+            System.out.println("No se encontraron los datos");
+            System.out.println("Deseas crear nuevo libro? 1)Y 0)N");
+            idopc = lector.nextInt();
+            if (idopc == 1) {
+                Libro libro = new Libro();
+                libro = RegistrarLibro();
+                libros.add(libro);
+            }
         }
 
 
-        Libro libro = new Libro(isbn, titulo, edicion, genero, editorial, autores);
-
-
-        return libro;
     }
+
 
 }
 

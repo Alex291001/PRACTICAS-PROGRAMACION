@@ -14,19 +14,24 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:background="@color/black">
-
         <TextView
-            android:id="@+id/resultado"
+            android:id="@+id/r0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="0"
+
+          android:layout_alignParentRight="true"
             android:textColorHint="@color/white"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="40dp"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeStepGranularity="2sp"
 
             />
+
 
 
     </RelativeLayout>
@@ -50,6 +55,8 @@
             <Button
                 android:id="@+id/bC"
                 android:text="C"
+               android:backgroundTint="@color/black"
+                android:textSize="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -57,6 +64,7 @@
             <Button
                 android:id="@+id/bParentesis"
                 android:text="()"
+
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -89,6 +97,7 @@
             <Button
                 android:id="@+id/b7"
                 android:text="7"
+
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

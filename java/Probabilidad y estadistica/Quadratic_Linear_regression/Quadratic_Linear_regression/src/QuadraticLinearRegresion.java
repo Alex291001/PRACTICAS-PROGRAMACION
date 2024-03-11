@@ -6,8 +6,6 @@ public class QuadraticLinearRegresion {
         double dt = 0.0;
         double SumX, SumY, SumX2, SumX3, SumX4, SumXY, SumX2Y, ds,r;
 
-
-
         SumX = n.SumX();
         SumY = n.SumY();
         SumX2 = n.SumX2();
