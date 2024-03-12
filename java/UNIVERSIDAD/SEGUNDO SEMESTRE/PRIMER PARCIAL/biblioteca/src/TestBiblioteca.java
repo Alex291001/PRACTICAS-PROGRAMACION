@@ -33,7 +33,7 @@ public class TestBiblioteca {
         Editoriales.add(new Editorial(3, "Planeta", "Nueva York", "331298379", "USA"));
         Editoriales.add(new Editorial(4, "Viking", "sanMatias", "331230022", "NuevaYork"));
 
-   
+
 
 
         Autor a;
@@ -243,25 +243,29 @@ public class TestBiblioteca {
                     System.out.println("Agrega el id del libro");
                     int opc = 0;
                     id = lector.nextInt();
-                    for (Libro n : libros) {
-                        if (id == n.getIsbm() && n != null) {
+                    for (Libro libro : libros) {
+                        if (id == libro.getIsbm() && libro != null) {
                             opc = 1;
-                            System.out.println("ID " + n.getIsbm());
-                            System.out.println("Nombre: " + n.gettitulo());
-                            System.out.println("Edicion " + n.getEdicion());
-                            System.out.println("Genero " + n.getGenero());
-                            System.out.println("Editorial " + n.getEditorial().getNombre());
+                            System.out.println("ID " + libro.getIsbm());
+                            System.out.println("Nombre: " + libro.gettitulo());
+                            System.out.println("Edicion " + libro.getEdicion());
+                            System.out.println("Genero " + libro.getGenero());
+                            System.out.println("Editorial " + libro.getEditorial().getNombre());
                             System.out.println("Autor/es ");
-                            for (Autor autores : n.getAutores())
+                            for (Autor autores : libro.getAutores())
                                 System.out.println(autores.nombre + " " + autores.aMaterno + " " + autores.aPaterno);
                             System.out.println("Deseas Eliminar el libro? 1)Y 0)N");
                             elimEdit = lector.nextInt();
 
-                            if (elimEdit == 1) libros.remove(n);
+                            if (elimEdit == 1) {
+                                libros.remove(libro);
+
+                            }
 
                             indexEdit = 1;
 
                         }
+                        break;
                     }
                     if (opc == 0) System.out.println("No se encontro el libro");
                     break;
@@ -269,22 +273,29 @@ public class TestBiblioteca {
                     System.out.println("ELIMINAR EDITORIAL");
                     System.out.println("Agrega el id del editorial");
                     id = lector.nextInt();
-                    for (Editorial n : Editoriales) {
-                        if (id == n.getId() && n != null) {
-                            System.out.println("ID " + n.getId());
-                            System.out.println("Nombre: " + n.getNombre());
-                            System.out.println("Direccion " + n.getDireccion());
-                            System.out.println("Telefono " + n.getTelefono());
-                            System.out.println("Ciudad " + n.getCiudad());
+                    for (Editorial editorial : Editoriales) {
+                        if (id == editorial.getId() && editorial != null) {
+                            System.out.println("ID " + editorial.getId());
+                            System.out.println("Nombre: " + editorial.getNombre());
+                            System.out.println("Direccion " + editorial.getDireccion());
+                            System.out.println("Telefono " + editorial.getTelefono());
+                            System.out.println("Ciudad " + editorial.getCiudad());
                             System.out.println("Deseas Eliminar el Editorial? 1)Y 0)N");
                             elimEdit = lector.nextInt();
 
-                            if (elimEdit == 1) Editoriales.remove(n);
+                            if (elimEdit == 1) {
+
+                                Editoriales.remove(editorial);
+
+                            }
 
                             indexEdit = 1;
 
+                            break;
                         }
+
                     }
+
                     //Se va directamente con el metodo buscar autor y manda 1 0 -1
 
                     //Si es -1 entonces significa que no tiene nada registrado en ese autor
@@ -447,6 +458,7 @@ public class TestBiblioteca {
                 //regresa 1 para dar a entender que se ejecuto y no necesita nada mas
                 if (opc == 2) {
                     System.out.println("¿Deseas eliminar al autor seleccionado? y=1/n=0");
+
                     int desicion = lector.nextInt();
                     if (desicion == 1) {
                         Autores.remove(m);
