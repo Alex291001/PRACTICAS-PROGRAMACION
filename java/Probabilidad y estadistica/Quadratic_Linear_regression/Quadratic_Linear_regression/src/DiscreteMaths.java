@@ -26,7 +26,7 @@ public class DiscreteMaths {
         for (double i : x)
             sum += i;
 
-
+       // System.out.println("X= "+sum);
 
         return sum;
 
@@ -36,7 +36,7 @@ public class DiscreteMaths {
         sum = 0;
         for (double i : y)
             sum += i;
-
+      //  System.out.println("Y= "+sum);
 
         return sum;
     }
@@ -45,7 +45,7 @@ public class DiscreteMaths {
         sum = 0;
         for (double i : x)
             sum += Math.pow(i, 2);
-
+       // System.out.println("X2= "+sum);
 
         return sum;
 
@@ -55,7 +55,7 @@ public class DiscreteMaths {
         sum = 0;
         for (double i : x)
             sum += Math.pow(i, 3);
-
+       // System.out.println("X3= "+sum);
 
         return sum;
     }
@@ -64,8 +64,9 @@ public class DiscreteMaths {
         sum = 0;
         for (double i : x)
             sum += Math.pow(i, 4);
-
+     //   System.out.println("X4= "+sum);
         return sum;
+
 
     }
 
@@ -78,6 +79,7 @@ public class DiscreteMaths {
             sum += (i) * y[s];
             s++;
         }
+       // System.out.println("XY= "+sum);
 
 
         return sum;
@@ -94,6 +96,8 @@ public class DiscreteMaths {
 
             s++;
         }
+
+       // System.out.println("X2Y= "+sum);
 
         return sum;
 

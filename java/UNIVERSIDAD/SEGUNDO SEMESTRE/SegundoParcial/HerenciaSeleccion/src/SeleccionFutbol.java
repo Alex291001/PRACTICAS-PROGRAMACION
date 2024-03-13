@@ -1,27 +1,26 @@
 public class SeleccionFutbol {
-    protected  int id;
+    protected int id;
     protected String Nombre;
 
     protected String Apellidos;
     protected int Edad;
 
 
+    public SeleccionFutbol(int id, String Nombre, String Apellidos, int Edad) {
 
- public SeleccionFutbol(int id, String Nombre, String Apellidos, int Edad){
-
-     this.id=id;
-     this.Nombre=Nombre;
-     this.Apellidos=Apellidos;
-     this.Edad=Edad;
- }
+        this.id = id;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Edad = Edad;
+    }
 
     public SeleccionFutbol() {
 
     }
 
-    public void Concentrarse(){
-     System.out.println("Estamos concentrados");
- }
+    public void Concentrarse() {
+        System.out.println("Estamos concentrados");
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -39,31 +38,26 @@ public class SeleccionFutbol {
         this.Edad = edad;
     }
 
-    public int getId(){
-     return id;
- }
+    public int getId() {
+        return id;
+    }
 
- public String getNombre(){
-     return Nombre;
- }
+    public String getNombre() {
+        return Nombre;
+    }
 
- public String getApellidos(){
-     return Apellidos;
- }
+    public String getApellidos() {
+        return Apellidos;
+    }
 
     public int getEdad() {
         return Edad;
     }
 
 
-    public void Viajar(){
+    public void Viajar() {
 
- }
-
-
-
-
-
+    }
 
 
 }
