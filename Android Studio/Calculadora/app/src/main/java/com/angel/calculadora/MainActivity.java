@@ -2,16 +2,21 @@ package com.angel.calculadora;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     public Button bc, bParentesis, bModulo, bDivision,
             b7, b8, b9, bMult, b4, b5, b6, bMenos,
             b1, b2, b3, bMas, bMasMenos, b0, bPunto, bIgual;
-    public TextView r;
+    public TextView r,tvR;
 
 
     @Override
@@ -40,14 +45,20 @@ public class MainActivity extends AppCompatActivity {
         b0 = findViewById(R.id.b0);
         bPunto = findViewById(R.id.bPunto);
         bIgual = findViewById(R.id.bIgual);
-
-        r=findViewById(R.id.r0);
-
+        tvR=findViewById(R.id.tvResult);
+        r=findViewById(R.id.tvOperation);
+      /*  String n= (String) r.getText();
+        SpannableString spannableString=new SpannableString(n);
+        ForegroundColorSpan foregroundColorSpan= new ForegroundColorSpan(Color.GREEN);
+        spannableString.setSpan(foregroundColorSpan,r.getText().length()-1,r.getText().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);*/
         final DataSet a=new DataSet() ;
+
+
         bc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               r.setText(a.bC());
+                tvR.setText(a.bC());
             }
 
         });
@@ -56,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(a.bParentesis(r));
+                change();
             }
         });
 
@@ -64,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.bModulo());
+                change();
+
             }
         });
 
@@ -71,13 +85,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.bDivision());
+                change();
             }
         });
 
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 r.setText(r.getText().toString()+a.b7());
+                change();
             }
         });
 
@@ -85,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b8());
+                change();
             }
         });
 
@@ -92,12 +110,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b9());
+                change();
             }
         });
         bMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.bMult());
+                change();
             }
         });
 
@@ -105,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b4());
+                change();
             }
 
         });
@@ -113,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b5());
+                change();
             }
         });
 
@@ -120,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b6());
+                change();
             }
         });
 
@@ -127,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.bMenos());
+                change();
             }
         });
 
@@ -134,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b1());
+                change();
             }
 
 
@@ -142,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b2());
+                change();
             }
         });
 
@@ -149,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b3());
+                change();
             }
         });
 
@@ -156,24 +183,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.bMas());
+                change();
             }
         });
         bMasMenos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.bMasMenos());
+                change();
             }
         });
         b0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.b0());
+                change();
             }
         });
         bPunto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 r.setText(r.getText().toString()+a.bPunto());
+                change();
             }
         });
 
@@ -181,4 +212,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void change(){
+
+        DiscreteMaths operacion= new DiscreteMaths();
+
+        tvR.setText(operacion.operation(r));
+
+        Toast.makeText(this,operacion.operation(r),Toast.LENGTH_SHORT).show();
+    }
 }

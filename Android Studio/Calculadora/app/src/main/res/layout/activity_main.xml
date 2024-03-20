@@ -15,21 +15,31 @@
         android:orientation="horizontal"
         android:background="@color/black">
         <TextView
-            android:id="@+id/r0"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvResult"
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="end"
             android:hint="0"
 
           android:layout_alignParentRight="true"
             android:textColorHint="@color/white"
             android:layout_alignParentBottom="true"
             android:textColor="@color/white"
-            android:textSize="40dp"
+            android:textSize="50dp"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="100sp"
             android:autoSizeStepGranularity="2sp"
 
+            />
+        <TextView
+            android:id="@+id/tvOperation"
+            android:textSize="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvResult"
+            android:gravity="end"
             />
 
 
@@ -37,6 +47,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:background="@color/black"
         android:id="@+id/llt"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -53,6 +64,7 @@
 
             >
             <Button
+
                 android:id="@+id/bC"
                 android:text="C"
                android:backgroundTint="@color/black"
