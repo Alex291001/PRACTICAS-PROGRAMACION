@@ -2,8 +2,10 @@ package com.angel.calculadora;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -12,11 +14,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class MainActivity extends AppCompatActivity {
     public Button bc, bParentesis, bModulo, bDivision,
             b7, b8, b9, bMult, b4, b5, b6, bMenos,
             b1, b2, b3, bMas, bMasMenos, b0, bPunto, bIgual;
     public TextView r,tvR;
+    public Vibrator vibrator;
 
 
     @Override
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         bIgual = findViewById(R.id.bIgual);
         tvR=findViewById(R.id.tvResult);
         r=findViewById(R.id.tvOperation);
+        vibrator=(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
       /*  String n= (String) r.getText();
         SpannableString spannableString=new SpannableString(n);
         ForegroundColorSpan foregroundColorSpan= new ForegroundColorSpan(Color.GREEN);
@@ -57,8 +62,10 @@ public class MainActivity extends AppCompatActivity {
         bc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(100);
               r.setText(a.bC());
                 tvR.setText(a.bC());
+
             }
 
         });
