@@ -1,14 +1,13 @@
 package com.angel.calculadora;
 
+import android.content.Context;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import java.nio.file.LinkOption;
 import java.util.ArrayList;
 
 public class DiscreteMaths {
+
 
 
     //public static ArrayList<Double> numeros = new ArrayList<>();
@@ -18,7 +17,11 @@ public class DiscreteMaths {
 
     }
 
-    public String operation(TextView tv) {
+    public void mostrarToast(Context context,String mensaje){
+        Toast.makeText(context,mensaje, Toast.LENGTH_SHORT).show();
+    }
+
+    public String operation(TextView tv, MainActivity m) {
         ArrayList<String> signos = new ArrayList<>();
 
         ArrayList<String> numeros = new ArrayList<>();
@@ -31,13 +34,14 @@ public class DiscreteMaths {
         for (int i = 0; i < num.length(); i++) {
 
             char caracter = num.charAt(i);
-            System.out.println(longitud);
-            if (esNumero(caracter)) {
+          //  System.out.println(longitud);
+            if (esNumero(caracter)||caracter=='.') {
                 if (i==0) signos.add("+");
                 caracteresNumeros += caracter;
-                if (i==num.length()-1) numeros.add(caracteresNumeros);
+                if (i==num.length()-1)
+                    numeros.add(caracteresNumeros);
             } else {
-                if (caracter == 'x' || caracter == '/' || caracter == '+' || caracter == '-')
+                if (caracter == 'x' || caracter == '/' || caracter == '+' || caracter == '-'|| caracter == '%')
                     signos.add(String.valueOf(caracter));
                      if (i!=0)
                     numeros.add(caracteresNumeros);
@@ -51,7 +55,7 @@ public class DiscreteMaths {
         }
 
 
-
+ if (num.charAt(num.length() - 1)=='.') return "";
 
 
         int i = 0;
@@ -71,7 +75,7 @@ public class DiscreteMaths {
                     if (UltimoCaracter == '/') return "";
 
                     else
-                        editNum = division(n, numeros.get(i));
+                        editNum = division(n, numeros.get(i),m);
                     break;
                 case "+":
                     if (UltimoCaracter == '+') return "";
@@ -99,6 +103,11 @@ public class DiscreteMaths {
 
                     break;
 
+                case "%":
+                    editNum=modulo(n);
+
+                    break;
+
                 default:
 
                     break;
@@ -113,21 +122,30 @@ public class DiscreteMaths {
             i++;
 
         }
-
         String SumT="0";
         for(String sumaT: SumaReales){
-            SumT= String.valueOf(Integer.parseInt(SumT)+Integer.parseInt(sumaT));
+            SumT= String.valueOf(Double.parseDouble(SumT)+Double.parseDouble(sumaT));
 
         }
+      String UltimoSigno=(signos.get(signos.size()-1));
+        char[] signo=UltimoSigno.toCharArray();
+        char Usigno=signo[signo.length-1];
+        if (Usigno=='%') {
 
-        return SumT;
+            System.out.println(SumT);
+            return SumT;
+        }
+
+        if (Double.parseDouble(SumT)%1!=0)
+            return SumT;
+        return String.valueOf((int) Double.parseDouble(SumT));
     }
 
 
     public boolean esNumero(char str) {
 
         try {
-            Integer.parseInt(String.valueOf((str)));
+           Double.parseDouble(String.valueOf((str)));
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -135,26 +153,82 @@ public class DiscreteMaths {
     }
 
     public String suma(String n1) {
-        System.out.println(n1);
-        return String.valueOf(Integer.parseInt(n1) * 1);
+        for (int i=0;i<n1.length();i++) {
+            char caracter = n1.charAt(i);
+            if (caracter=='.') return String.valueOf(Double.parseDouble(n1) * 1);
+        }
+        return String.valueOf(Double.parseDouble(n1) * 1);
     }
 
     public String resta(String n1) {
 
-        System.out.println(n1);
-        return String.valueOf(Integer.parseInt(n1) *-1);
+        for (int i=0;i<n1.length();i++) {
+            char caracter = n1.charAt(i);
+            if (caracter=='.') return String.valueOf(Double.parseDouble(n1) * -1);
+        }
+        return String.valueOf(Double.parseDouble(n1) *-1);
 
     }
 
     public String multiplicacion(String n1, String n2) {
+        for (int i=0;i<n1.length();i++) {
+            char caracter = n1.charAt(i);
+            if (caracter=='.') {
+                double r=Double.parseDouble(n1) * Double.parseDouble(n2);
+                double resultadoRedondeado = Math.round(r * 100.0) / 100.0;
+                return String.valueOf(resultadoRedondeado);
+            }
+        }
+        for (int i=0;i<n2.length();i++) {
+            char caracter = n2.charAt(i);
+            if (caracter=='.') {
+                double r=Double.parseDouble(n1) * Double.parseDouble(n2);
+                double resultadoRedondeado = Math.round(r * 100.0) / 100.0;
+                return String.valueOf(resultadoRedondeado);
+            }
+        }
 
-        return String.valueOf(Integer.parseInt(n1) * Integer.parseInt(n2));
+        double r=Double.parseDouble(n1) * Double.parseDouble(n2);
+        double resultadoRedondeado = Math.round(r * 100.0) / 100.0;
+        return String.valueOf(resultadoRedondeado);
     }
 
-    public String division(String n1, String n2) {
+    public String division(String n1, String n2, MainActivity getApplicationContext) {
+        System.out.println(n2);
 
+        if (Double.parseDouble(n2)==0) {
+            mostrarToast(getApplicationContext, "Operacion Invalida");
+            return n2;
+        }
+        else {
+            for (int i=0;i<n1.length();i++) {
+                char caracter = n1.charAt(i);
+                if (caracter=='.') {
+                    double r=Double.parseDouble(n1) / Double.parseDouble(n2);
+                    double resultadoRedondeado = Math.round(r * 100.0) / 100.0;
+                    return String.valueOf(resultadoRedondeado);
+                }
+            }
+            for (int i=0;i<n2.length();i++) {
+                char caracter=n2.charAt(i);
+                if (caracter=='.') {
+                    double r=Double.parseDouble(n1) / Double.parseDouble(n2);
+                    double resultadoRedondeado = Math.round(r * 100.0) / 100.0;
+                    return String.valueOf(resultadoRedondeado);
+                }
+            }
 
-        return String.valueOf(Integer.parseInt(n1) / Integer.parseInt(n2));
+            double r=Double.parseDouble(n1) / Double.parseDouble(n2);
+            double resultadoRedondeado = Math.round(r * 100.0) / 100.0;
+            return String.valueOf(resultadoRedondeado);
+        }
+    }
+
+    public String modulo(String n1){
+        double r=Double.parseDouble(n1) / 100;
+
+        return String.valueOf(r);
+
     }
 
 

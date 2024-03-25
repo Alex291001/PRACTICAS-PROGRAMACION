@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/tvResult"
             android:gravity="end"
+            android:layout_marginRight="20dp"
             />
         <ImageButton
             android:id="@+id/bDelete"
@@ -94,7 +95,7 @@
 
 
                 />
-            <Button
+           <!-- <Button
                 android:id="@+id/bParentesis"
                 android:text="()"
 
@@ -105,7 +106,7 @@
                 android:layout_marginLeft="15dp"
                 android:textColor="@color/green_e"
                 android:backgroundTint="@color/marron"
-                />
+                />-->
             <Button
                 android:id="@+id/bModulo"
                 android:text="%"

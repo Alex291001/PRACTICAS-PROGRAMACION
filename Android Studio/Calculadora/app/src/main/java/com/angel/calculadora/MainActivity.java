@@ -11,6 +11,7 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
             b7, b8, b9, bMult, b4, b5, b6, bMenos,
             b1, b2, b3, bMas, bMasMenos, b0, bPunto, bIgual;
     public TextView r,tvR;
+    public ImageButton bDelete;
     public Vibrator vibrator;
 
 
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bc = findViewById(R.id.bC);
-        bParentesis = findViewById(R.id.bParentesis);
+       // bParentesis = findViewById(R.id.bParentesis);
         bModulo = findViewById(R.id.bModulo);
         bDivision = findViewById(R.id.bDivision);
         b7 = findViewById(R.id.b7);
@@ -51,18 +53,30 @@ public class MainActivity extends AppCompatActivity {
         bIgual = findViewById(R.id.bIgual);
         tvR=findViewById(R.id.tvResult);
         r=findViewById(R.id.tvOperation);
+        bDelete=findViewById(R.id.bDelete);
         vibrator=(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
       /*  String n= (String) r.getText();
         SpannableString spannableString=new SpannableString(n);
         ForegroundColorSpan foregroundColorSpan= new ForegroundColorSpan(Color.GREEN);
         spannableString.setSpan(foregroundColorSpan,r.getText().length()-1,r.getText().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);*/
         final DataSet a=new DataSet() ;
+        a.setM(this);
 
+        bDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vibrator.vibrate(10);
+                Delete d = new Delete();
+                r.setText(d.delete(r));
+                change();
+            }
+        });
 
         bc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(100);
+                vibrator.vibrate(25);
               r.setText(a.bC());
                 tvR.setText(a.bC());
 
@@ -70,19 +84,19 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        bParentesis.setOnClickListener(new View.OnClickListener() {
+       /* bParentesis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 r.setText(a.bParentesis(r));
                 change();
             }
-        });
+        });*/
 
 
         bModulo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.bModulo());
+                r.setText(r.getText().toString()+a.bModulo(r));
                 change();
 
             }
@@ -91,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         bDivision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.bDivision());
+                r.setText(r.getText().toString()+a.bDivision(r));
                 change();
             }
         });
@@ -100,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                r.setText(r.getText().toString()+a.b7());
+                r.setText(r.getText().toString()+a.b7(r));
                 change();
             }
         });
@@ -108,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b8());
+                r.setText(r.getText().toString()+a.b8(r));
                 change();
             }
         });
@@ -116,14 +130,14 @@ public class MainActivity extends AppCompatActivity {
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b9());
+                r.setText(r.getText().toString()+a.b9(r));
                 change();
             }
         });
         bMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.bMult());
+                r.setText(r.getText().toString()+a.bMult(r));
                 change();
             }
         });
@@ -131,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b4());
+                r.setText(r.getText().toString()+a.b4(r));
                 change();
             }
 
@@ -140,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b5());
+                r.setText(r.getText().toString()+a.b5(r));
                 change();
             }
         });
@@ -148,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b6());
+                r.setText(r.getText().toString()+a.b6(r));
                 change();
             }
         });
@@ -156,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         bMenos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.bMenos());
+                r.setText(r.getText().toString()+a.bMenos(r));
                 change();
             }
         });
@@ -164,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b1());
+                r.setText(r.getText().toString()+a.b1(r));
                 change();
             }
 
@@ -173,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b2());
+                r.setText(r.getText().toString()+a.b2(r));
                 change();
             }
         });
@@ -181,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b3());
+                r.setText(r.getText().toString()+a.b3(r));
                 change();
             }
         });
@@ -189,29 +203,38 @@ public class MainActivity extends AppCompatActivity {
         bMas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.bMas());
+                r.setText(r.getText().toString()+a.bMas(r));
                 change();
             }
         });
         bMasMenos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.bMasMenos());
+                r.setText(r.getText().toString()+a.bMasMenos(r));
                 change();
             }
         });
         b0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.b0());
+                r.setText(r.getText().toString()+a.b0(r));
                 change();
             }
         });
         bPunto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                r.setText(r.getText().toString()+a.bPunto());
+
+                r.setText(r.getText().toString()+a.bPunto(r));
                 change();
+            }
+        });
+
+        bIgual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               r.setText(tvR.getText().toString());
+                vibrator.vibrate(10);
             }
         });
 
@@ -221,11 +244,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void change(){
-
+        vibrator.vibrate(10);
         DiscreteMaths operacion= new DiscreteMaths();
 
-        tvR.setText(operacion.operation(r));
+        if (r.getText().toString()!="")tvR.setText(operacion.operation(r,this));
 
-        Toast.makeText(this,operacion.operation(r),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,operacion.operation(r),Toast.LENGTH_SHORT).show();
     }
 }
