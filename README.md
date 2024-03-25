@@ -3,8 +3,20 @@ En este repositorio almacenare todas las practicas relacionadas con la logica de
 
 Generare una carpeta con datos completos acerca de ello.
 
-Este repositorio tendra practicas con el lenguaje de programacion [Javascript](https://github.com/Alex291001/PRACTICAS-PROGRAMACION/tree/main/JavaScript)
+Este repositorio tendra practicas con el lenguaje de programacion:
 
 
+Java
+ 
+JavaScript 
 
+C
+ 
+C++
+ 
+HTML
+ 
+CSS
+ 
+Other
 
